@@ -3,7 +3,7 @@ import HeroesList from './HeroesList';
 import HeroesDetail from './HeroDetail';
 
 const Heroes = () => (
-  <div className={ 'heroes-section' }>
+  <div className={ 'heroes-container' }>
     <HeroesList />
     <HeroesDetail />
   </div>

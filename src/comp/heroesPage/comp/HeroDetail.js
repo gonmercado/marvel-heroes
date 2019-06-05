@@ -16,15 +16,13 @@ const HeroesDetail = () => (
       </div>
       <img src={ HeroData.imageSrc } />
     </div>
-    <div>
-      <div className={ 'hero-details__sections-buttons' }>
-        <div className={ 'hero-details__sections-buttons_active' }>Comics</div>
-        <div>Series</div>
-        <div>Stories</div>
-      </div>
-      <div className={ 'hero-details__section-detail' }>
-        <ComicSection />
-      </div>
+    <div className={ 'hero-details__sections-buttons' }>
+      <div className={ 'hero-details__sections-buttons_active' }>Comics</div>
+      <div>Series</div>
+      <div>Stories</div>
+    </div>
+    <div className={ 'hero-details__section-detail' }>
+      <ComicSection />
     </div>
   </div>
 );

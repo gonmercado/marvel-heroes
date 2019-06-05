@@ -1,4 +1,4 @@
-.heroes-section {
+.heroes-container {
   display: flex;
   height: 100vh;
   .heroes-list {
@@ -30,7 +30,8 @@
 }
 
 .hero-details {
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   &__information {
     border-bottom: 1px solid darkgray;
     background-color: #fff;
@@ -46,6 +47,7 @@
     }
   }
   &__sections-buttons {
+    height: 50px;
     background-color: #d9fff8;
     box-shadow: 0 5px 6px -3px rgba(0,0,0,0.75);
     display: flex;
@@ -63,6 +65,10 @@
     }
   }
   &__section-detail {
+    background-color: #fff;
+    flex: 1;
+    overflow-y: auto;
+    margin: 5px;
     padding: 15px;
     h3 {
       margin: 0;
