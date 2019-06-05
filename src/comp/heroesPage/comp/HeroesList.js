@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroesListItem from './HeroesListItem';
+import getAxios from '../../../setupAxios';
 
 const heroesListData = [{
   id: 0,
@@ -15,10 +16,19 @@ const heroesListData = [{
   name : 'Spider-man'
 }];
 
-const HeroesList = () => (
-  <div className={ 'heroes-list' }>
-    { heroesListData.map(hero => <HeroesListItem hero={ hero }/>) }
-  </div>
-);
+const HeroesList = () => {
+  const [ heroes, setHeroes ] = useState([]);
+
+  useEffect(async () => {
+    const heroesData = await getAxios().get('/characters?ts=1&apikey=a1be8fc15fded83847446238352e6936&hash=2026cd85e04eb40847400e809f58133d');
+    setHeroes(heroesData);
+  }, []);
+
+  return (
+    <div className={ 'heroes-list' }>
+      { heroes.map(hero => <HeroesListItem hero={ hero }/>) }
+    </div>
+  );
+};
 
 export default HeroesList;

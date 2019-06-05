@@ -9,6 +9,8 @@ const setAxiosInstace = () => {
   return axiosInstance;
 };
 
-export default getAxios = () => {
+const getAxios  = () => {
   return axiosInstance || setAxiosInstace();
-}
+};
+
+export default getAxios;
