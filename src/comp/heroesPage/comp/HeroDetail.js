@@ -3,6 +3,7 @@ import ComicSection from './ComicSection';
 
 const HeroData = {
   imageSrc: 'https://via.placeholder.com/300',
+  imageAlt: 'Iron man',
   name: 'Iron man',
   description: 's dfasd fasd fasdf asdf asdfasdfasd fasdf as sa fs f'
 };
@@ -14,7 +15,7 @@ const HeroesDetail = () => (
         <h2>{ HeroData.name }</h2>
         <p>{ HeroData.description }</p>
       </div>
-      <img src={ HeroData.imageSrc } />
+      <img src={ HeroData.imageSrc } alt={ HeroData.imageAlt } />
     </div>
     <div className={ 'hero-details__sections-buttons' }>
       <div className={ 'hero-details__sections-buttons_active' }>Comics</div>

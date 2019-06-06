@@ -19,9 +19,20 @@ const heroesListData = [{
 const HeroesList = () => {
   const [ heroes, setHeroes ] = useState([]);
 
-  useEffect(async () => {
-    const heroesData = await getAxios().get('/characters?ts=1&apikey=a1be8fc15fded83847446238352e6936&hash=2026cd85e04eb40847400e809f58133d');
-    setHeroes(heroesData);
+  useEffect(() => {
+    const fetchHeroes = async () => {
+      try {
+        const heroesData = await getAxios().get('/characters/?api_key=261abfbdb6ff32cdcc99aca7893263ad145d1017&format=json');
+        console.log(heroesData);
+        return heroesData;
+      }
+      catch(error) {
+        console.log(error);
+        return [];
+      }
+    };
+
+    setHeroes(fetchHeroes());
   }, []);
 
   return (

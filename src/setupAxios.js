@@ -4,7 +4,7 @@ let axiosInstance;
 
 const setAxiosInstace = () => {
   axiosInstance = axios.create({
-    baseURL: '/v1/public'
+    baseURL: 'api'
   });
   return axiosInstance;
 };
