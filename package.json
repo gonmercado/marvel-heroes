@@ -29,7 +29,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://10.50.200.122/",
+  "proxy": "http://gateway.marvel.com/",
   "devDependencies": {
     "node-sass": "4.12.0"
   }
