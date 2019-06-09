@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import HeroesListItem from './HeroesListItem';
-import getAxios from '../../../setupAxios';
+import useResourceList from "./useResourceList";
 
-const HeroesList = () => {
-  const [ heroes, setHeroes ] = useState([]);
-
-  useEffect(() => {
-    const fetchHeroes = async () => {
-      try {
-        const heroesData = await getAxios().get('/list?resourceName=characters');
-        setHeroes(heroesData.data.results);
-      }
-      catch(error) {
-        console.log(error);
-      }
-    };
-    fetchHeroes();
-  }, []);
+const HeroesList = ({ onCharacterSelect }) => {
+  const heroes = useResourceList('characters');
 
   return (
     <div className={ 'heroes-list' }>
-      { heroes.map(hero => <HeroesListItem key={ hero.id } hero={ hero }/>) }
+      { heroes && heroes.map(hero => <HeroesListItem key={ hero.id } hero={ hero } onCharacterClick={ onCharacterSelect }/>) }
     </div>
   );
+};
+
+HeroesList.propTypes = {
+  onCharacterSelect: PropTypes.func
+};
+
+HeroesList.defaultProps = {
+  onCharacterSelect: () => null
 };
 
 export default HeroesList;
