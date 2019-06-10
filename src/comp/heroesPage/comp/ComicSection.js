@@ -1,73 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import useResourceDetail from "./useResourceDetail";
 
-const comicsData = [{
-  id: 1,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 2,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 3,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 4,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 5,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 6,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 7,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 8,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 9,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 10,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-},{
-  id: 11,
-  title: 'Comic title',
-  description: 'asdfkjasdlf sadlfkjasd lfkjasdlkfj asldkfjasldkfjasldkfjalskd fjlaksdjflaksdjflskdjfl dfjdkjfdkjfdkjf',
-  imageSrc: 'https://via.placeholder.com/100x160'
-}];
+const ComicSection = ({ selectedCharacterId }) => {
+  const characterInfo = useResourceDetail('character', selectedCharacterId, { field_list: [ 'issue_credits' ]});
 
-const ComicSection = () => (
-  <div>
-    <div className={ 'comic-section' }>
-      { comicsData.map(comic => (
-        <div className={ 'comic-section__comic-container'} key={ comic.id }>
-          <img src={ comic.imageSrc } alt={ comic.title } />
-          <p>{ comic.title }</p>
+  return (
+    <div>
+      {
+        selectedCharacterId && characterInfo &&
+        <div className={ 'comic-section' }>
+          { characterInfo.issue_credits.map(comic => (
+            <div className={ 'comic-section__comic-container'} key={ comic.id }>
+              <img src={ 'https://via.placeholder.com/100x160' } alt={ comic.name } />
+              <p>{ comic.name }</p>
+            </div>
+          ))}
         </div>
-      ))}
+      }
     </div>
-  </div>
-);
+  );
+}
+
+ComicSection.propTypes = {
+  selectedCharacterId: PropTypes.number.isRequired
+}
 
 export default ComicSection;

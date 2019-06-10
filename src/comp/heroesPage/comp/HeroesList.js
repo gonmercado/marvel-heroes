@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import HeroesListItem from './HeroesListItem';
 import useResourceList from "./useResourceList";
 
-const HeroesList = ({ onCharacterSelect }) => {
-  const heroes = useResourceList('characters');
+const HeroesList = ({ onCharacterSelect, searchValue }) => {
+  const heroes = useResourceList('characters', { field_list: ['id', 'name', 'image'] }, 'name', searchValue);
 
   return (
     <div className={ 'heroes-list' }>
@@ -14,10 +14,12 @@ const HeroesList = ({ onCharacterSelect }) => {
 };
 
 HeroesList.propTypes = {
+  searchValue: PropTypes.string,
   onCharacterSelect: PropTypes.func
 };
 
 HeroesList.defaultProps = {
+  searchValue: '',
   onCharacterSelect: () => null
 };
 

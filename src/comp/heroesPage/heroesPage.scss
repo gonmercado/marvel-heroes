@@ -6,7 +6,6 @@
   }
   .hero-details {
     flex: 1;
-    overflow-y: auto;
   }
 }
 
@@ -101,4 +100,16 @@
   &__comic-container {
     width: 150px;
   }
+}
+
+.hero-search {
+  padding: 10px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  input {
+    flex: 1;
+    margin-right: 10px;
+  }
+
 }
