@@ -15,11 +15,13 @@ const HeroesDetail = ({ selectedCharacterId }) => {
   const renderActiveSection = () => {
     switch(activeSection) {
       case 'wiki':
-        return <HeroWiki characterId={ selectedCharacterId }/>
+        return <HeroWiki characterId={ selectedCharacterId }/>;
       case 'comics':
-        return <ComicSection selectedCharacterId={ selectedCharacterId } />
+        return <ComicSection selectedCharacterId={ selectedCharacterId } />;
+      default:
+        return null;
     }
-  }
+  };
 
   return (
     <>

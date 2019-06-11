@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import queryString from 'query-string';
 import getAxios from "../../../setupAxios";
-import useTypes from "./useTypes";
+import typesContext from "../../../typesContext";
 
 const useResourceDetail = (resourceName, resourceId, filters) => {
   const [ resourceDetail, setResourceDetail ] = useState();
-  const [ types, findTypeId ] = useTypes();
+  const { types, findTypeId } = useContext(typesContext);
 
   useEffect(() => {
     const fetchData = async () => {
