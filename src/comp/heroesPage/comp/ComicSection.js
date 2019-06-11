@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useResourceDetail from "./useResourceDetail";
+import {comics} from "../../../data";
 
 const ComicSection = ({ selectedCharacterId }) => {
-  const characterInfo = useResourceDetail('character', selectedCharacterId, { field_list: [ 'issue_credits' ]});
+  const characterInfo = comics.results;
 
   return (
     <div>

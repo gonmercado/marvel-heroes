@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HeroesList from './HeroesList';
 import HeroesDetail from './HeroDetail';
 import HeroSearch from "./HeroSearch";
 
 const Heroes = () => {
-  const [ selectedCharacter, setSelectedCharacter ] = useState();
-  const [ searchValue, setSearchValue ] = useState('');
+  const handleCharacterSelect = characterId => console.log(characterId);
 
-  const handleCharacterSelect = characterId => setSelectedCharacter(characterId);
-
-  const handleHeroSearch = searchValue => setSearchValue(searchValue);
+  const handleHeroSearch = searchValue => console.log(searchValue);
 
   return (
     <div className={ 'heroes-container' }>
       <div>
         <HeroSearch onSearch={ handleHeroSearch }/>
-        <HeroesList onCharacterSelect={ handleCharacterSelect } searchValue={ searchValue } />
+        <HeroesList onCharacterSelect={ handleCharacterSelect } searchValue={ '' } />
       </div>
-      <HeroesDetail selectedCharacterId={ selectedCharacter } />
+      <HeroesDetail selectedCharacterId={ 1 } />
     </div>
   );
 };

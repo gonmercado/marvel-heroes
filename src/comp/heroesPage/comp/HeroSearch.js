@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeroSearch = ({ onSearch }) => {
-  const [ searchValue, setSearchValue ] = useState('');
-
-  const handleSearch = () => {
-    onSearch(searchValue)
+class HeroSearch extends React.Component {
+  state = {
+    searchValue: ''
   };
 
-  return (
-    <div className={ 'hero-search '}>
-      <input value={ searchValue } onChange={ ev => setSearchValue(ev.target.value) } />
-      <button onClick={ handleSearch }>Search</button>
-    </div>
-  );
-};
+  handleSearch = () => {
+    this.props.onSearch(this.state.searchValue)
+  };
+
+  render() {
+    return (
+      <div className={ 'hero-search '}>
+        <input value={ this.state.searchValue } onChange={ ev => this.setState({ searchValue: ev.target.value }) } />
+        <button onClick={ this.handleSearch }>Search</button>
+      </div>
+    );
+  }
+}
 
 HeroSearch.propTypes = {
   onSearch: PropTypes.func.isRequired

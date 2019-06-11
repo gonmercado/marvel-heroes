@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ComicSection from './ComicSection';
-import useResourceDetail from "./useResourceDetail";
 import HeroWiki from "./HeroWiki";
+import {character} from "../../../data";
 
 const HeroesDetail = ({ selectedCharacterId }) => {
-  const hero = useResourceDetail('character', selectedCharacterId, { field_list: ['id', 'name', 'image', 'aliases'] });
-  const [ activeSection, setActiveSection ] = useState('wiki');
-
-  useEffect(() => {
-    setActiveSection('wiki');
-  }, [ selectedCharacterId ])
+  const hero = character.results;
 
   const renderActiveSection = () => {
-    switch(activeSection) {
+    switch('wiki') {
       case 'wiki':
         return <HeroWiki characterId={ selectedCharacterId }/>;
       case 'comics':
@@ -40,8 +35,8 @@ const HeroesDetail = ({ selectedCharacterId }) => {
             </div>
           </div>
           <div className={ 'hero-details__sections-buttons' }>
-            <div className={ 'hero-details__sections-buttons_active' } onClick={ () => setActiveSection('wiki') }>Wiki</div>
-            <div onClick={ () => setActiveSection('comics') }>Comics</div>
+            <div className={ 'hero-details__sections-buttons_active' } onClick={ () => null }>Wiki</div>
+            <div>Comics</div>
             <div>Series</div>
             <div>Stories</div>
           </div>

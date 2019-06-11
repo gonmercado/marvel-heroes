@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useResourceDetail from "./useResourceDetail";
+import {wiki} from "../../../data";
 
 const HeroWiki = ({ characterId }) => {
-  const characterInfo = useResourceDetail('character', characterId, { field_list: [ 'description' ]})
+  const characterInfo = wiki.results;
 
   return (
     <div className={ 'hero-details__description'}>

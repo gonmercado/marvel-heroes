@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HeroesListItem from './HeroesListItem';
-import useResourceList from "./useResourceList";
+import {characters} from "../../../data";
 
 const HeroesList = ({ onCharacterSelect, searchValue }) => {
-  const heroes = useResourceList('characters', { field_list: ['id', 'name', 'image'] }, 'name', searchValue);
+  const heroes = characters.results;
 
   return (
     <div className={ 'heroes-list' }>
