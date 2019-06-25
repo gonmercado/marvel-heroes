@@ -4,11 +4,11 @@ let axiosInstance;
 
 const setAxiosInstace = () => {
   axiosInstance = axios.create({
-    baseURL: '/v1/public'
+    baseURL: '/api/v1'
   });
   return axiosInstance;
 };
 
-export default getAxios = () => {
+export const getAxios = () => {
   return axiosInstance || setAxiosInstace();
 }

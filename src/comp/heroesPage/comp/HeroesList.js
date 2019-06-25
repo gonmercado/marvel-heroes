@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroesListItem from './HeroesListItem';
+import queryString from 'query-string';
+import { getAxios } from '../../../setupAxios';
 
-const heroesListData = [{
-  id: 0,
-  imageSrc: 'https://via.placeholder.com/60',
-  name : 'Iron Man'
-}, {
-  id: 0,
-  imageSrc: 'https://via.placeholder.com/60',
-  name : 'Thor'
-}, {
-  id: 0,
-  imageSrc: 'https://via.placeholder.com/60',
-  name : 'Spider-man'
-}];
+const HeroesList = () => {
+  const [ heroes, setHeroes ] = useState([]);
 
-const HeroesList = () => (
-  <div className={ 'heroes-list' }>
-    { heroesListData.map(hero => <HeroesListItem hero={ hero }/>) }
-  </div>
-);
+  useEffect(() => {
+    const queryParams = {
+      resourceName: 'characters'
+    };
+    getAxios().get(`/list?${ queryString.stringify(queryParams, { arrayFormat: 'comma' }) }`).then(resp => {
+      setHeroes(resp.data.results)
+    })
+  }, []);
+
+  return (
+    <div className={ 'heroes-list' }>
+      { heroes.map(hero => <HeroesListItem key={ hero.id } hero={ hero }/>) }
+    </div>
+  );
+}
 
 export default HeroesList;
