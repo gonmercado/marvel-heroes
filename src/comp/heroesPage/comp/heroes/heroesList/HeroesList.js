@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeroesListItem from './HeroesListItem';
 import queryString from 'query-string';
-import { getAxios } from '../../../setupAxios';
+import { getAxios } from '../../../../../setupAxios';
 
 const HeroesList = () => {
   const [ heroes, setHeroes ] = useState([]);

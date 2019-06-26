@@ -1,6 +1,6 @@
 import React from 'react';
-import HeroesList from './HeroesList';
-import HeroesDetail from './HeroDetail';
+import HeroesList from './heroesList/HeroesList';
+import HeroesDetail from './heroesDetail/HeroDetail';
 
 const Heroes = () => (
   <div className={ 'heroes-container' }>

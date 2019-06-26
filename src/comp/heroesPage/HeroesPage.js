@@ -1,5 +1,5 @@
 import React from 'react'
-import Heroes from './comp/Heroes';
+import Heroes from './comp/heroes/Heroes';
 import './heroesPage.scss';
 
 const HeroesPage = () => (
