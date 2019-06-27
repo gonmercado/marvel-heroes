@@ -1,0 +1,1 @@
+/api/*  http://nodejs-ex-marvel-heroes.apps.us-west-2.online-starter.openshift.com/api/:splat  200
