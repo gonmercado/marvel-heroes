@@ -30,7 +30,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3080/",
+  "proxy": "http://nodejs-ex-marvel-heroes.apps.us-west-2.online-starter.openshift.com/",
   "devDependencies": {
     "node-sass": "4.12.0"
   }
